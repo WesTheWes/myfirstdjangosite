@@ -1,0 +1,29 @@
+#page {
+	max-width: 960px;
+	min-width: 720px;
+	margin: 10px auto 10px auto;
+	padding: 20px;
+	border: 3px double black;
+}
+
+#title {
+	text-align: center;
+	margin: 20px auto 20px auto;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.navigation ul {
+	width: 570 px;
+	padding: 15px;
+	margin: 0px auto 0px auto;
+	text-align: center;
+}
+
+.navigation li {
+	display: inline;
+	margin: 0px 3px;
+}
+
+#footer {
+	
+}
