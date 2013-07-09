@@ -3,13 +3,5 @@
 {% block title%}Future Time!{% endblock %}
 
 {% block content %}
-<p>In {{ hour_offset }} hour(s), it will be {{ next_time }}.</p>
-{% endblock %}
-
-{% block footer %}
-<hr>
-<p>
-I can't wait for you to visit my site {{ hour_offset }} hour(s) from now!
-Ya know, to confirm that I was right. LATER!
-</p>
+<p>In {{ hour_offset }} hour{% if plural_hours %}s{% endif %}, it will be {{ next_time }}.</p>
 {% endblock %}

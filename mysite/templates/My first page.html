@@ -2,25 +2,28 @@
 <html lang="en">
 <head>
 	<title>My First HTML/CSS/Javascript Page!</title>
-	<link rel="stylesheet" type="text/css" href="myfirststylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="static\myfirststylesheet.css" />
 </head>
 <body>
 	<div id="page">
 		<div id="header">
 			<div id="title">
-				<h1>Welcome to Wes' Wonderful Website</h1>
+				<h1>Wes' Wonderful Website</h1>
 			</div>
 			<div class="navigation">
 				<ul>
 					<li><a href='http://www.google.com'>Home</a></li>
+					<li><a href='/time/'>Time</a></li>
 					<li><a href="#">My Stuff</a></li>
 					<li><a href="#">About Me</a></li>
 				</ul>
 			</div>
 		</div>
+		{% block title %}{% endblock %}
+		{% block content %}{% endblock %}
 		<div id="footer">
 			<hr>
-			<p>Thanks for visiting my site.</p>
+			<p>Thanks for visiting!</p>
 		</div>
 	</div>
 </body>

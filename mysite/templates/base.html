@@ -1,14 +1,31 @@
 <DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 <html lang="en">
 <head>
-	<title>{% block title %}{% endblock %}</title>
+	<title>My First HTML/CSS/Javascript Page!</title>
+	<link rel="stylesheet" type="text/css" href="/static/myfirststylesheet.css" />
 </head>
 <body>
-	<h1>My helpful timestamp site</h1>
-	{% block content %}{% endblock %}
-	{% block footer %}
-	<hr>
-	<p>Thanks for visiting my site.</p>
-	{% endblock %}
+	<div id="page">
+		<div id="header">
+			<div id="title">
+				<h1>Wes' Wonderful Website</h1>
+			</div>
+			<div class="navigation">
+				<ul>
+					<li><a href='/'>Home</a></li>
+					<li><a href='/time/'>Time</a></li>
+					<li><a href='/time/plus/12'>Future Time</a></li>
+					<li><a href="#">My Stuff</a></li>
+					<li><a href="#">About Me</a></li>
+				</ul>
+			</div>
+		</div>
+		<h1>{% block title %}{% endblock %}</h1>
+		{% block content %}{% endblock %}
+		<div id="footer">
+			<hr>
+			<p>Thanks for visiting!</p>
+		</div>
+	</div>
 </body>
 </html>
