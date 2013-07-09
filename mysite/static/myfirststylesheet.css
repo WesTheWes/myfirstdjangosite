@@ -1,0 +1,53 @@
+body {
+	background: -webkit-linear-gradient(left, rgba(209,92,25,1) 0%,rgba(226,120,27,1) 30%,rgba(226,120,27,1) 70%,rgba(209,92,25,1) 100%);
+	font-family: Arial, sans-serif;
+}
+
+#page {
+	border-radius: 40px;
+	background: -webkit-linear-gradient(top, rgba(15,180,231,1) 0%,rgba(153,223,245,1) 89%,rgba(169,228,247,1) 99%,rgba(169,228,247,1) 100%);
+	max-width: 960px;
+	min-width: 720px;
+	margin: 10px auto 10px auto;
+	padding: 20px;
+}
+
+#title {
+	text-align: center;
+	background: -webkit-linear-gradient(160deg, rgba(191,210,85,0) 0%,rgba(189,209,83,0) 1%,rgba(137,182,26,1) 28%,rgba(114,170,0,1) 40%,rgba(142,185,42,1) 53%,rgba(151,195,44,1) 79%,rgba(158,203,45,0) 100%);
+	margin: 20px auto 20px auto;
+	border-top: 5px double black;
+	border-bottom: 5px double black;
+	border-radius: 30px;
+}
+
+.navigation li a {
+	padding: .5em;
+	color: #007EFC;
+	box-shadow: 1px 1px 3px #10AAF2;
+}
+
+.navigation ul li a:hover {
+	color: black;
+		box-shadow: 10px 10px 5px #10AAF2;
+}
+
+.navigation li a:visited {
+	color: #017FFD;
+}
+
+.navigation ul {
+	width: 570 px;
+	padding: 15px;
+	margin: 0px auto 0px auto;
+	text-align: center;
+}
+
+.navigation ul li {
+	display: inline;
+	margin: 0px 3px;
+}
+
+#footer {
+	text-align: right;
+}
