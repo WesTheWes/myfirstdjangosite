@@ -3,7 +3,7 @@ import re
 
 class Category(models.Model):
 
-	category_name = models.CharField(max_length=50)
+	category_name = models.CharField(max_length=30)
 	
 	def __unicode__(self):
 		return self.category_name
@@ -19,7 +19,7 @@ class Unit(models.Model):
 			return u'No Units'
 
 class Ingredient(models.Model):
-	ingredient_name = models.CharField(max_length=50)
+	ingredient_name = models.CharField(max_length=30)
 	price = models.FloatField()
 	unit = models.ForeignKey(Unit)
 	category = models.ForeignKey(Category)
