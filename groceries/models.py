@@ -1,4 +1,5 @@
 from django.db import models
+import recipes
 import re
 
 class Category(models.Model):
@@ -18,20 +19,28 @@ class Unit(models.Model):
 		else:
 			return u'No Units'
 
-class Ingredient(models.Model):
-	ingredient_name = models.CharField(max_length=30)
+class Item(models.Model):
+	item_name = models.CharField(max_length=30)
 	price = models.FloatField()
 	unit = models.ForeignKey(Unit)
 	category = models.ForeignKey(Category)
-	amount = models.FloatField()
-	calories = models.IntegerField()
+	amount = models.FloatField(blank=True)
+	calories = models.FloatField(blank=True)
 	
 	def __unicode__(self):
-		# checks to see if there is a unit
-		ingredient = (self.unit.unit_type and 
-		              u'%s of %s' %(plural(self.unit.unit_type), self.ingredient_name) or 
-					  u'%s' %plural(self.ingredient_name))
+		# checks to see if there is a unit, and then prints the amount of the Ingredient
+		item = (self.unit.unit_type and 
+		              u'%s of %s' %(plural(self.unit.unit_type), self.item_name) or 
+					  u'%s' %plural(self.item_name))
 		return u'%s %s' %(self.amount, ingredient)
+
+class GroceryList(models.Model):
+	list_name = models.CharField(max_length=30)
+	recipes = models.ManyToManyField('recipes.RecipeList')
+	total_price = models.FloatField()
+	
+	def __unicode__(self):
+		return self.list_name
 
 def plural(noun):                            
     if re.search('[sxz]$', noun):             
