@@ -3,7 +3,7 @@ import groceries
 
 class Recipe(models.Model):
 	recipe_name = models.CharField(max_length=30)
-	ingredients = models.ManyToManyField('groceries.Item')
+	ingredients = models.ManyToManyField('groceries.ListItem')
 	servings = models.IntegerField()
 	calories = models.FloatField()
 	
