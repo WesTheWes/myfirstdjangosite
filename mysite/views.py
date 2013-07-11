@@ -1,15 +1,18 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 import datetime
+import httpagentparser
 
 def hello(request):
 	return HttpResponse("Hello world")
 	
 def my_homepage(request):
-	browser = request.META.get('HTTP_USER_AGENT', 'unknown')
-	if browser == 'unknown':
-		browser = False
-	return render(request, 'myhomepage.html', {'browser': browser})
+	data = request.META.get('HTTP_USER_AGENT', 'unknown')
+	if data == 'unknown':
+		data = False
+	else:
+		browser, os = httpagentparser.detect(data)['browser']['name'], httpagentparser.detect(data)['os']['name']
+	return render(request, 'myhomepage.html', {'data':data, 'browser': browser, 'os':os})
 	
 def current_datetime(request):
 	now = datetime.datetime.now()

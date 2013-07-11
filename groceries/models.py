@@ -8,6 +8,8 @@ class Category(models.Model):
 	
 	def __unicode__(self):
 		return self.category_name
+	
+	
 
 class Unit(models.Model):
 	# A list of all units, with one blank for items with no units
@@ -21,11 +23,11 @@ class Unit(models.Model):
 			return u'No Units'
 
 class Item(models.Model):
-	# This is a list of all items
+	# A list of all items
 	# Make sure all items are singular
 	item = models.CharField(max_length=30, unique=True)
 	price = models.FloatField(blank=True)
-	unit = models.ForeignKey(Unit, default=Unit.objects.get(unit_type=""))
+	unit = models.ForeignKey(Unit)
 	category = models.ForeignKey(Category, blank=True, null=True)
 	calories = models.FloatField(default=0)
 	
@@ -52,6 +54,7 @@ class ListItem(models.Model):
 		return u'%s %s' %(self.amount, item)
 
 class GroceryList(models.Model):
+	# A list of recipes and items, associated with a user
 	list_name = models.CharField(max_length=30)
 	recipes = models.ManyToManyField('recipes.RecipeList', blank=True, null=True)
 	additional_items = models.ManyToManyField(ListItem, blank=True, null=True)
