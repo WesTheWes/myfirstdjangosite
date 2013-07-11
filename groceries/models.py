@@ -26,7 +26,7 @@ class Item(models.Model):
 	# A list of all items
 	# Make sure all items are singular
 	item = models.CharField(max_length=30, unique=True)
-	price = models.FloatField(blank=True)
+	price = models.FloatField(blank=True, default=0)
 	unit = models.ForeignKey(Unit)
 	category = models.ForeignKey(Category, blank=True, null=True)
 	calories = models.FloatField(default=0)

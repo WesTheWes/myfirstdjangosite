@@ -1,0 +1,17 @@
+{%extends 'base.html' %}
+
+{% block title %}
+This is a search form.
+{% endblock %}
+
+{% block content %}
+<form action='/search/' method='get'>
+	<input type='text' name='q'>
+	<input type='submit' value="search">
+</form>
+{% if searched %}
+<p>
+{{searched}}
+</p>
+{% endif %}
+{% endblock %}
