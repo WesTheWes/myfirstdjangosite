@@ -1,17 +1,17 @@
 {%extends 'base.html' %}
 
 {% block title %}
-This is a search form.
+We're all searching for something!
 {% endblock %}
 
 {% block content %}
-<form action='/search/' method='get'>
+<form action='' method='get'>
 	<input type='text' name='q'>
-	<input type='submit' value="search">
+	<input type='submit' value="Search">
 </form>
-{% if searched %}
-<p>
-{{searched}}
+{% if error %}
+<p style="color: red;">
+Seriously? Dude, you can't search for nothing...that doesn't even make sense. Type something in that box, THEN press search.
 </p>
 {% endif %}
 {% endblock %}

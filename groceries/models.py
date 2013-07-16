@@ -26,8 +26,8 @@ class Item(models.Model):
 	# A list of all items
 	# Make sure all items are singular
 	item = models.CharField(max_length=30, unique=True)
-	price = models.FloatField(blank=True, default=0)
-	unit = models.ForeignKey(Unit)
+	price = models.FloatField(default=0)
+	unit = models.ForeignKey(Unit, default= Unit(unit_type='')) 
 	category = models.ForeignKey(Category, blank=True, null=True)
 	calories = models.FloatField(default=0)
 	
@@ -52,18 +52,31 @@ class ListItem(models.Model):
 		        u'%s of %s' %(pluralize(self.item_name.unit.unit_type), self.item_name.item) or 
 				u'%s' %pluralize(self.item_name.item))
 		return u'%s %s' %(self.amount, item)
+		
+	def price(self):
+		return self.item_name.price * self.amount
+		
+	def calories(self):
+		return self.item_name.calories * self.amount
 
 class GroceryList(models.Model):
 	# A list of recipes and items, associated with a user
 	list_name = models.CharField(max_length=30)
 	recipes = models.ManyToManyField('recipes.RecipeList', blank=True, null=True)
 	additional_items = models.ManyToManyField(ListItem, blank=True, null=True)
-	total_price = models.FloatField(default=0)
 	user = models.ForeignKey(User)
 	
 	def __unicode__(self):
 		return self.list_name
 
+	def price(self):
+		price = 0
+		for recipe in self.recipes:
+			price += recipe.price
+		for additional_item in additional_items:
+			price += additional_item.price
+		return price
+	
 def plural(noun):                            
     if re.search('[sxz]$', noun):             
         return re.sub('$', 'es', noun)        

@@ -8,19 +8,31 @@ class Recipe(models.Model):
 	servings = models.FloatField(blank=True, null=True)
 	user = models.ForeignKey(User)
 	
-	def calories(self):
-		calories = 0
-		for ingredient in self.ingredients:
-			calories += (ingredient.item_name.calories * ingredient.amount)
-		return calories
-	
 	def __unicode__(self):
 		return self.recipe_name
 
+	def calories(self):
+		calories = 0
+		for ingredient in self.ingredients:
+			calories += ingredient.calories
+		return calories
+	
+	def price(self):
+		price = 0
+		for ingredient in self.ingredients:
+			price += ingredient.price
+		return price
+		
 class RecipeList(models.Model):
 	recipe_name = models.CharField(max_length=30)
-	recipe = models.ManyToManyField(Recipe)
+	recipes = models.ManyToManyField(Recipe)
 	user = models.ForeignKey(User)
+	
+	def price(self):
+		price = 0
+		for recipe in self.recipes:
+			price += recipe.price
+		return price
 
 	def __unicode__(self):
 		return self.list_name
