@@ -8,8 +8,6 @@ class Category(models.Model):
 	
 	def __unicode__(self):
 		return self.category_name
-	
-	
 
 class Unit(models.Model):
 	# A list of all units, with one blank for items with no units

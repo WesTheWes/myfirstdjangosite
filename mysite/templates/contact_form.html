@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Contact Info Form!
+{% endblock %}
+
+{% block content %}
+<h3>Contact Me</h3>
+
+{% if form.errors %}
+<p>Please correct the error{{ form.errors|pluralize }} below</p>
+{% endif %}
+
+<form action="/contact/" method="post">
+	<table>
+	{{ form.as_table }}
+	</table>
+	{% csrf_token %}
+	<input type="submit" value="Submit">
+</form>
+
+{% endblock %}

@@ -9,9 +9,11 @@ We're all searching for something!
 	<input type='text' name='q'>
 	<input type='submit' value="Search">
 </form>
-{% if error %}
-<p style="color: red;">
-Seriously? Dude, you can't search for nothing...that doesn't even make sense. Type something in that box, THEN press search.
-</p>
+{% if errors %}
+<ul>
+	{% for error in errors %}
+	<li style="color: red;">{{ error }}</li>
+	{% endfor%}
+</ul>
 {% endif %}
 {% endblock %}

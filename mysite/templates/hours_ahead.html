@@ -3,5 +3,21 @@
 {% block title%}Future Time!{% endblock %}
 
 {% block content %}
+<p>Enter the amount of hours you would like to travel into the future!</p>
+<p>Disclaimer: You do not actually travel to the future, only this clock does, and it cannot tell you what it sees. Doing so would put the entire universe at risk, so don't try anything!</p>
+
+<form action='' method='get'>
+	<input type='text' name='q'>
+	<input type='submit' value="Search">
+</form>
+
+{% if errors %}
+{% for error in errors %}
+<p style="color: red;"> {{error}} </p>
+{% endfor %}
+{% endif %}
+
+{% if hour_offset %}
 <p>In {{ hour_offset }} hour{% if plural_hours %}s{% endif %}, it will be {{ next_time }}.</p>
+{% endif %}
 {% endblock %}
