@@ -24,8 +24,10 @@
 		<h1>{% block title %}{% endblock %}</h1>
 		{% block content %}{% endblock %}
 		<div id="footer">
-			<hr>
-			<p>Thanks for visiting!</p>
+			{% block footer %}
+			<br>
+			<p>Thanks For Visiting!</p>
+			{% endblock %}
 		</div>
 	</div>
 </body>

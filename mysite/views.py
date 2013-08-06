@@ -24,15 +24,20 @@ def hours_ahead(request, offset=None):
 		offset = request.GET['q']
 		try:
 			offset = int(offset)
-			try:
-				dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
-			except OverflowError:
-				offset, dt = None, None
-				errors.append("Okay, that's too far. This time machine doesn't go that far into the future, deal with it.")
+			if offset == 0:
+				errors.append("That's what clocks are for dummy!")
+				dt = datetime.datetime.now()
+				offset = '0'
+			else:
+				try:
+					dt = datetime.datetime.now() + datetime.timedelta(hours=offset)
+				except OverflowError:
+					offset, dt = None, None
+					errors.append("Okay, that's too far. This time machine doesn't go that far into the future, deal with it.")
 		except ValueError:
 			offset, dt = None, None	
 			errors.append("Listen buddy, don't make this hard on yourself. Just enter an integer so we can go to the future")
-		if offset > 1: 
+		if offset and offset > 1 or offset < -1: 
 			plural_hours=True
 		else:
 			plural_hours=False

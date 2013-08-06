@@ -62,7 +62,6 @@ class GroceryList(models.Model):
 	list_name = models.CharField(max_length=30)
 	recipes = models.ManyToManyField('recipes.RecipeList', blank=True, null=True)
 	additional_items = models.ManyToManyField(ListItem, blank=True, null=True)
-	user = models.ForeignKey(User)
 	
 	def __unicode__(self):
 		return self.list_name

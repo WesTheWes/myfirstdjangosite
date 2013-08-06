@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 from mysite.views import hello, my_homepage, current_datetime, hours_ahead
 from books import views
+from django.contrib.auth.views import login, logout
+from recipes.views import create_recipe
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -13,6 +15,9 @@ urlpatterns = patterns('',
 	url(r'^time/future/$', hours_ahead),
 	url(r'^search/$', views.search),
 	url(r'^contact/$', views.contact),
+	url(r'^login/$', login),
+	url(r'^logout/$', logout),
+	url(r'^create/$', create_recipe),
     # Examples:
     # url(r'^$', 'mysite.views.home', name='home'),
     # url(r'^mysite/', include('mysite.foo.urls')),

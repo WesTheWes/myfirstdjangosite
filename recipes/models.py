@@ -2,11 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 import groceries
 
+class Direction(models.Model):
+	step = models.CharField(max_length=200)
+
 class Recipe(models.Model):
 	recipe_name = models.CharField(max_length=30)
 	ingredients = models.ManyToManyField('groceries.ListItem')
 	servings = models.FloatField(blank=True, null=True)
-	user = models.ForeignKey(User)
+	creator = models.ForeignKey(User)
+	directions = models.ManyToManyField(Direction)
 	
 	def __unicode__(self):
 		return self.recipe_name
@@ -26,7 +30,6 @@ class Recipe(models.Model):
 class RecipeList(models.Model):
 	recipe_name = models.CharField(max_length=30)
 	recipes = models.ManyToManyField(Recipe)
-	user = models.ForeignKey(User)
 	
 	def price(self):
 		price = 0
