@@ -4,12 +4,15 @@ import groceries
 
 class Direction(models.Model):
 	step = models.CharField(max_length=200)
+	
+	def __unicode__(self):
+		return self.step
 
 class Recipe(models.Model):
 	recipe_name = models.CharField(max_length=30)
 	ingredients = models.ManyToManyField('groceries.ListItem')
 	servings = models.FloatField(blank=True, null=True)
-	creator = models.ForeignKey(User)
+	creator = models.ForeignKey(User, blank=True, null=True)
 	directions = models.ManyToManyField(Direction)
 	
 	def __unicode__(self):

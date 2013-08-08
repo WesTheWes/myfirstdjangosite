@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Create a Recipe!{% endblock %}
+
+{% block content %}
+<div class="recipe_create">
+	<form class="new_recipe" action='' method="post">
+		<div class="recipe_name">
+			<input type="text" name="recipe_name" id="recipe_name" value="Recipe Name"></input>
+		</div>
+		<div class="add_ingredient">
+			<div class="header">
+				<label>Ingredients:</label>
+			</div>
+			{% if ingredients %}
+			<div class="ingredients">
+				<ul>
+					{% for ingredient in ingredients %}
+					<li>{{ingredient}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+			{% endif %}
+			<input type="text" name="ingredient" value="Ingredient">
+			<input type="submit" value="Add Ingredient!" title="Add Ingredient">
+		</div>
+		<div class="directions">
+			<div class="header">
+				<label>Directions:</label>
+			</div>
+			{% if directions %}
+			<div class="directions">
+				<ol>
+					{% for direction in directions %}
+					<li>{{direction}}</li>
+					{% endfor %}
+				</ol>
+			</div>
+			{% endif %}
+			<input type="text" name="direction" value="Step #{{step_number}}">
+			<input type="submit" value="Add Step!" title="Add Step">
+		</div>
+		<div class="submit_recipe">
+			<input type="submit" value="Finish Recipe!">
+		</div>
+	</form>
+</div>
+
+
+{% endblock %}

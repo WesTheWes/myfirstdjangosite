@@ -24,8 +24,8 @@ class Item(models.Model):
 	# A list of all items
 	# Make sure all items are singular
 	item = models.CharField(max_length=30, unique=True)
+	unit = models.ForeignKey(Unit, default= Unit(unit_type=''))
 	price = models.FloatField(default=0)
-	unit = models.ForeignKey(Unit, default= Unit(unit_type='')) 
 	category = models.ForeignKey(Category, blank=True, null=True)
 	calories = models.FloatField(default=0)
 	
@@ -35,20 +35,23 @@ class Item(models.Model):
 class ListItem(models.Model):
 	# Each item in a recipe or grocery list will be put through here
 	# Allows the amount of each item to be saved in the database, and associated with a Recipe
-	item_name = models.ForeignKey(Item, blank=True, null=True)
+	item_name = models.ForeignKey(Item)
 	amount = models.FloatField()
+	unit = models.ForeignKey(Unit, default= Unit(unit_type=''))
 	
 	def __unicode__(self):
-		# checks to see if there is a unit, if the amount is more than 1, and then prints the amount of the item
+		# checks to see if the amount is more than 1, if the item is using a specific unit, and then prints the amount of the item
 		if self.amount > 1:
 			def pluralize(x):
 				return plural(x)
 		else:
 			def pluralize(x):
 				return x
-		item = (self.item_name.unit.unit_type and 
-		        u'%s of %s' %(pluralize(self.item_name.unit.unit_type), self.item_name.item) or 
+				
+		item = (self.unit.unit_type and 
+		        u'%s of %s' %(pluralize(self.unit.unit_type), self.item_name.item) or 
 				u'%s' %pluralize(self.item_name.item))
+		
 		return u'%s %s' %(self.amount, item)
 		
 	def price(self):
