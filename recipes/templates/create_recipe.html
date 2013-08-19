@@ -6,7 +6,7 @@
 <div class="recipe_create">
 	<form class="new_recipe" action='' method="post">
 		<div class="recipe_name">
-			<input type="text" name="recipe_name" id="recipe_name" value="Recipe Name"></input>
+			<input type="text" name="recipe_name" id="recipe_name" value="{{recipe_name}}"></input>
 		</div>
 		<div class="add_ingredient">
 			<div class="header">
@@ -21,8 +21,10 @@
 				</ul>
 			</div>
 			{% endif %}
-			<input type="text" name="ingredient" value="Ingredient">
-			<input type="submit" value="Add Ingredient!" title="Add Ingredient">
+			<input type="text" name="ingredient_amount" value="{{ new_ingredient.amount }}">
+			<input type="text" name="ingredient_unit" value="{{ new_ingredient.unit }}">of
+			<input type="text" name="ingredient_type" value="{{ new_ingredient.ingredient }}">
+			<input type="submit" name ="ingredient" value="Add Ingredient!">
 		</div>
 		<div class="directions">
 			<div class="header">
@@ -37,14 +39,20 @@
 				</ol>
 			</div>
 			{% endif %}
-			<input type="text" name="direction" value="Step #{{step_number}}">
-			<input type="submit" value="Add Step!" title="Add Step">
+			<input type="text" name="direction" value="{% if new_direction %} {{new_direction}} {% else %}Step #{{step_number}}{% endif %}">
+			<input type="submit" name="step" value="Add Step!">
 		</div>
 		<div class="submit_recipe">
-			<input type="submit" value="Finish Recipe!">
+			<input type="submit" name="finish" value="Finish Recipe!">
 		</div>
 	</form>
 </div>
 
-
+{% if errors %}
+<ul>
+{% for error in errors %}
+<li>{{ error }}</li>
+{% endfor %}
+</ul>
+{% endif %}
 {% endblock %}

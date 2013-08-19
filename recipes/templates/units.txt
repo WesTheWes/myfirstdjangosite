@@ -1,0 +1,14 @@
+#Volume
+
+'ounce' 'oz'
+'teaspoon' 'tsp'
+'tablespoon' 'tbl' 'tbs' 'tbsp'
+'fluid ounce' 'fl oz' 'fluid oz' 'fl ounce'
+'cup' 'c'
+'pint' 'p' 'pt' 'fl pt'
+'quart' 'q' 'qt' 'fl qt'
+'gallon' 'g' 'gal'
+'millilitre' 'millileter' 'ml' 'cc'
+'litre' 'liter' 'l'
+'decilitre' 'deciliter' 'dl'
+

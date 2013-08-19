@@ -1,0 +1,40 @@
+<NotepadPlus>
+    <Project name="MySite">
+        <Folder name="Recipes">
+            <File name="recipes\admin.py" />
+            <File name="recipes\models.py" />
+            <File name="recipes\views.py" />
+            <Folder name="Templates">
+                <File name="recipes\templates\create_recipe.html" />
+            </Folder>
+        </Folder>
+        <Folder name="Groceries">
+            <File name="groceries\admin.py" />
+            <File name="groceries\models.py" />
+            <File name="groceries\views.py" />
+        </Folder>
+        <Folder name="Books">
+            <File name="books\admin.py" />
+            <File name="books\forms.py" />
+            <File name="books\models.py" />
+            <File name="books\views.py" />
+        </Folder>
+        <File name="mysite\settings.py" />
+        <File name="mysite\urls.py" />
+        <File name="mysite\views.py" />
+        <Folder name="Templates">
+            <File name="mysite\templates\base.html" />
+            <File name="mysite\templates\contact_form.html" />
+            <File name="mysite\templates\current_datetime.html" />
+            <File name="mysite\templates\hours_ahead.html" />
+            <File name="mysite\templates\login.html" />
+            <File name="mysite\templates\My first page.html" />
+            <File name="mysite\templates\myhomepage.html" />
+            <File name="mysite\templates\search_form.html" />
+            <File name="mysite\templates\search_results.html" />
+        </Folder>
+        <Folder name="Static">
+            <File name="mysite\static\myfirststylesheet.css" />
+        </Folder>
+    </Project>
+</NotepadPlus>
